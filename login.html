@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iniciar sesión | RutinasFit</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="auth-container">
+    <div class="auth-box">
+      <h2>Iniciar Sesión</h2>
+      <input type="email" id="email" placeholder="Correo electrónico" required />
+      <input type="password" id="password" placeholder="Contraseña" required />
+      <button id="loginBtn" class="btn">Entrar</button>
+
+      <p style="margin-top: 1rem;">¿No tienes cuenta?
+        <a href="register.html" style="color:#00c896; text-decoration:none; font-weight:600;">Regístrate aquí</a>
+      </p>
+    </div>
+  </div>
+
+  <script type="module">
+    import { auth } from "./firebase-config.js";
+    import { signInWithEmailAndPassword }
+      from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+    const loginBtn = document.getElementById("loginBtn");
+
+    loginBtn.addEventListener("click", async () => {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        window.location.href = "dashboard.html";
+      } catch (error) {
+        alert("Error: " + error.message);
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,304 @@
+/* ====== RESET ====== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #f5f7fa;
+  color: #222;
+  scroll-behavior: smooth;
+}
+
+/* ====== NAVBAR ====== */
+.navbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 3rem;
+  z-index: 1000;
+}
+
+.navbar .logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.navbar .logo span {
+  color: #00c896;
+}
+
+.navbar ul {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.navbar ul li a:hover {
+  color: #00c896;
+}
+
+.auth-buttons .btn.small {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+}
+
+/* ====== HERO SECTION ====== */
+.hero {
+  height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("img/hero-bg.jpeg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  padding: 0 1rem;
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: #ddd;
+}
+
+.btn {
+  background-color: #00c896;
+  border: none;
+  color: #fff;
+  padding: 0.9rem 1.8rem;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: #00a57d;
+  transform: translateY(-2px);
+}
+
+/* ====== SECCIONES ====== */
+.section {
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.section h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #222;
+}
+
+/* ====== TARJETAS ====== */
+.cards-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.card {
+  background-color: #fff;
+  width: 300px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card h3 {
+  color: #00c896;
+  margin: 1rem 0 0.5rem;
+}
+
+.card p {
+  font-size: 0.95rem;
+  padding: 0 1rem 1.5rem;
+  color: #555;
+}
+
+/* ====== EJERCICIOS ====== */
+.exercises {
+  background-color: #f0f5f3;
+}
+
+.exercise-preview {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.exercise {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  width: 250px;
+  overflow: hidden;
+}
+
+.exercise img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.exercise h4 {
+  color: #00c896;
+  margin-top: 1rem;
+}
+
+.exercise p {
+  padding: 0 1rem 1rem;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+/* ====== LOGIN / REGISTRO ====== */
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(120deg, #00c896, #006f52);
+  color: white;
+}
+
+.auth-box {
+  background: #fff;
+  color: #333;
+  border-radius: 15px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.auth-box h2 {
+  margin-bottom: 1rem;
+  color: #00c896;
+}
+
+.auth-box input {
+  width: 100%;
+  padding: 0.8rem;
+  margin: 0.5rem 0;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.auth-box button {
+  width: 100%;
+  margin-top: 1rem;
+  background-color: #00c896;
+  border: none;
+  color: #fff;
+  padding: 0.8rem;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.auth-box button:hover {
+  background-color: #00a57d;
+}
+
+/* ====== PAGINA USUARIO ====== */
+.user-page {
+  padding-top: 5rem;
+  text-align: center;
+}
+
+.user-page h2 {
+  color: #00c896;
+  margin-bottom: 1rem;
+}
+
+.routine-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.routine-card {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 1rem;
+  width: 280px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ====== FOOTER ====== */
+footer {
+  background-color: #111;
+  color: #ccc;
+  text-align: center;
+  padding: 1.2rem;
+  font-size: 0.9rem;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .navbar ul {
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .cards-container,
+  .exercise-preview {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .auth-box {
+    padding: 1.5rem;
+  }
+}
