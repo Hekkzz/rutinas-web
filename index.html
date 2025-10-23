@@ -1,87 +1,59 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RutinasFit - Tu entrenador personal online</title>
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RutinasFit | Tu entrenador personal IA</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-    <!-- 🔹 Encabezado -->
-    <header class="navbar">
-        <div class="logo">Rutinas<span>Fit</span></div>
-        <nav>
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#rutinas">Rutinas</a></li>
-                <li><a href="#ejercicios">Ejercicios</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-        </nav>
-        <div class="auth-buttons">
-            <button onclick="window.location.href='login.html'" class="btn small">Iniciar Sesión / Registro</button>
-        </div>
-    </header>
+  <!-- 🔹 NAVBAR -->
+  <header class="navbar">
+    <div class="logo">Rutinas<span>Fit</span></div>
+    <nav>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#rutinas">Rutinas</a></li>
+        <li><a href="#ejercicios">Ejercicios</a></li>
+      </ul>
+    </nav>
+    <button class="btn small" onclick="window.location.href='login.html'">Acceder</button>
+  </header>
 
-    <div class="page-content">
-        <!-- 🔹 Sección principal -->
-        <section id="inicio" class="hero">
-            <div class="hero-content">
-                <h1>Transforma tu cuerpo con rutinas personalizadas</h1>
-                <p>Crea rutinas adaptadas a tu nivel, objetivos y tiempo disponible.</p>
-                <button class="btn" id="startBtn">Empieza ahora</button>
-            </div>
-        </section>
-
-        <!-- 🔹 Sección de Rutinas -->
-        <section id="rutinas" class="section">
-            <h2>Rutinas por objetivo</h2>
-            <div class="cards-container">
-                <div class="card" onclick="redirigirLogin()">
-                    <img src="img/fuerza.jpeg" alt="Fuerza">
-                    <h3>Ganar fuerza</h3>
-                    <p>Ejercicios enfocados en aumentar masa muscular y potencia.</p>
-                </div>
-                <div class="card" onclick="redirigirLogin()">
-                    <img src="img/cardio.jpg" alt="Cardio">
-                    <h3>Perder grasa</h3>
-                    <p>Entrenamientos de alta intensidad para quemar calorías.</p>
-                </div>
-                <div class="card" onclick="redirigirLogin()">
-                    <img src="img/estiramiento.jpg" alt="Flexibilidad">
-                    <h3>Flexibilidad y movilidad</h3>
-                    <p>Rutinas para mejorar tu postura y prevenir lesiones.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 🔹 Sección de Ejercicios -->
-        <section id="ejercicios" class="section exercises">
-            <h2>Aprende la forma correcta</h2>
-            <p>Explora los ejercicios más comunes con explicaciones paso a paso.</p>
-            <div class="exercise-preview">
-                <div class="exercise">
-                    <img src="img/sentadilla.jpg" alt="Sentadilla">
-                    <h4>Sentadilla</h4>
-                    <p>Mantén la espalda recta y baja hasta que tus rodillas estén a 90°.</p>
-                </div>
-                <div class="exercise">
-                    <img src="img/plancha.jpg" alt="Plancha">
-                    <h4>Plancha</h4>
-                    <p>Mantén el cuerpo alineado y el abdomen contraído. No bajes las caderas.</p>
-                </div>
-            </div>
+  <!-- 🔹 HERO -->
+  <section id="inicio" class="hero">
+    <div class="hero-content">
+      <h1>Tu cuerpo, tu ritmo, tu evolución</h1>
+      <p>Entrena con rutinas inteligentes adaptadas a ti, impulsadas por IA.</p>
+      <button class="btn" onclick="window.location.href='login.html'">Comienza ahora</button>
     </div>
-    </section>
+  </section>
 
-    <!-- 🔹 Pie de página -->
-    <footer id="contacto">
-        <p>© 2025 RutinasFit. Todos los derechos reservados.</p>
-    </footer>
+  <!-- 🔹 RUTINAS -->
+  <section id="rutinas" class="section">
+    <h2>Rutinas Inteligentes</h2>
+    <div class="cards-container">
+      <div class="card" onclick="window.location.href='login.html'">
+        <img src="img/fuerza.jpeg" alt="Fuerza" />
+        <h3>Fuerza</h3>
+        <p>Desarrolla masa muscular y potencia con planes progresivos.</p>
+      </div>
+      <div class="card" onclick="window.location.href='login.html'">
+        <img src="img/cardio.jpg" alt="Cardio" />
+        <h3>Cardio</h3>
+        <p>Rutinas intensas para quemar grasa y mejorar tu resistencia.</p>
+      </div>
+      <div class="card" onclick="window.location.href='login.html'">
+        <img src="img/estiramiento.jpg" alt="Flexibilidad" />
+        <h3>Flexibilidad</h3>
+        <p>Mejora tu movilidad y prevén lesiones con estiramientos guiados.</p>
+      </div>
+    </div>
+  </section>
 
-    <script src="script.js"></script>
+  <!-- 🔹 FOOTER -->
+  <footer>
+    <p>© 2025 RutinasFit | Desarrollado con 💪 por IA Fitness</p>
+  </footer>
 </body>
-
 </html>

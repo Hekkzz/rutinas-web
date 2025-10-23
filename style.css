@@ -1,4 +1,4 @@
-/* ====== RESET ====== */
+/* ===== RESET ===== */
 * {
   margin: 0;
   padding: 0;
@@ -6,35 +6,44 @@
   font-family: "Poppins", sans-serif;
 }
 
+/* ===== VARIABLES ===== */
+:root {
+  --dark-blue: #0a1730;
+  --mid-blue: #1c2a48;
+  --cream: #f5eedc;
+  --accent: #e9e4d4;
+  --highlight: #c9b88a;
+  --text-light: #f7f8fa;
+}
+
+/* ===== BODY ===== */
 body {
-  background-color: #f5f7fa;
-  color: #222;
+  background-color: var(--dark-blue);
+  color: var(--text-light);
   scroll-behavior: smooth;
 }
 
-/* ====== NAVBAR ====== */
+/* ===== NAVBAR ===== */
 .navbar {
   width: 100%;
   position: fixed;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.75);
-  color: #fff;
+  background: rgba(10, 23, 48, 0.95);
+  color: var(--text-light);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 3rem;
+  padding: 1rem 2rem;
   z-index: 1000;
+  backdrop-filter: blur(8px);
 }
 
 .navbar .logo {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 700;
   letter-spacing: 1px;
-}
-
-.navbar .logo span {
-  color: #00c896;
+  color: var(--cream);
 }
 
 .navbar ul {
@@ -45,60 +54,58 @@ body {
 
 .navbar ul li a {
   text-decoration: none;
-  color: #fff;
+  color: var(--text-light);
   transition: 0.3s;
 }
 
 .navbar ul li a:hover {
-  color: #00c896;
+  color: var(--highlight);
 }
 
-.auth-buttons .btn.small {
-  padding: 0.4rem 0.8rem;
-  font-size: 0.9rem;
-}
-
-/* ====== HERO SECTION ====== */
+/* ===== HERO SECTION ===== */
 .hero {
   height: 100vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+  background: linear-gradient(rgba(10, 23, 48, 0.85), rgba(10, 23, 48, 0.85)),
     url("img/hero-bg.jpeg") center/cover no-repeat;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: #fff;
+  color: var(--cream);
   padding: 0 1rem;
 }
 
 .hero-content h1 {
-  font-size: 2.5rem;
+  font-size: 3rem;
+  font-weight: 700;
   margin-bottom: 1rem;
+  letter-spacing: 1px;
 }
 
 .hero-content p {
-  font-size: 1.2rem;
-  margin-bottom: 1.5rem;
-  color: #ddd;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: var(--accent);
 }
 
 .btn {
-  background-color: #00c896;
+  background-color: var(--highlight);
+  color: var(--dark-blue);
   border: none;
-  color: #fff;
-  padding: 0.9rem 1.8rem;
-  border-radius: 30px;
-  cursor: pointer;
+  padding: 0.9rem 2rem;
+  border-radius: 50px;
   font-weight: 600;
-  transition: 0.3s;
+  cursor: pointer;
+  transition: 0.3s ease;
 }
 
 .btn:hover {
-  background-color: #00a57d;
+  background-color: var(--cream);
   transform: translateY(-2px);
 }
 
-/* ====== SECCIONES ====== */
+/* ===== SECCIONES ===== */
 .section {
   padding: 5rem 2rem;
   text-align: center;
@@ -107,10 +114,10 @@ body {
 .section h2 {
   font-size: 2rem;
   margin-bottom: 2rem;
-  color: #222;
+  color: var(--cream);
 }
 
-/* ====== TARJETAS ====== */
+/* ===== TARJETAS ===== */
 .cards-container {
   display: flex;
   justify-content: center;
@@ -119,18 +126,17 @@ body {
 }
 
 .card {
-  background-color: #fff;
+  background-color: var(--mid-blue);
   width: 300px;
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   overflow: hidden;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s ease;
   cursor: pointer;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-6px);
 }
 
 .card img {
@@ -140,114 +146,119 @@ body {
 }
 
 .card h3 {
-  color: #00c896;
+  color: var(--highlight);
   margin: 1rem 0 0.5rem;
 }
 
 .card p {
   font-size: 0.95rem;
   padding: 0 1rem 1.5rem;
-  color: #555;
+  color: var(--accent);
 }
 
-/* ====== EJERCICIOS ====== */
-.exercises {
-  background-color: #f0f5f3;
-}
-
-.exercise-preview {
+/* ===== LOGIN / REGISTRO ===== */
+.auth-body {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 2rem;
-}
-
-.exercise {
-  background: #fff;
-  border-radius: 15px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-  width: 250px;
-  overflow: hidden;
-}
-
-.exercise img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.exercise h4 {
-  color: #00c896;
-  margin-top: 1rem;
-}
-
-.exercise p {
-  padding: 0 1rem 1rem;
-  color: #555;
-  font-size: 0.9rem;
-}
-
-/* ====== LOGIN / REGISTRO ====== */
-.auth-container {
-  display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: linear-gradient(120deg, #00c896, #006f52);
-  color: white;
+  background: var(--dark-blue);
 }
 
-.auth-box {
-  background: #fff;
-  color: #333;
-  border-radius: 15px;
-  padding: 2rem;
+.auth-card {
+  background: var(--mid-blue);
+  border-radius: 20px;
+  padding: 2.5rem;
   width: 90%;
   max-width: 400px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
   text-align: center;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-.auth-box h2 {
+.auth-card h1 {
+  color: var(--cream);
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.auth-card p {
+  color: var(--accent);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.input-group {
+  text-align: left;
   margin-bottom: 1rem;
-  color: #00c896;
 }
 
-.auth-box input {
+.input-group label {
+  display: block;
+  color: var(--cream);
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+
+.input-group input {
   width: 100%;
-  padding: 0.8rem;
-  margin: 0.5rem 0;
-  border: 1px solid #ccc;
+  padding: 0.75rem;
   border-radius: 10px;
+  border: 1px solid var(--highlight);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-light);
+  font-size: 1rem;
+  outline: none;
 }
 
-.auth-box button {
+.input-group input:focus {
+  border-color: var(--cream);
+  box-shadow: 0 0 8px rgba(245, 238, 220, 0.4);
+}
+
+.auth-card button {
   width: 100%;
   margin-top: 1rem;
-  background-color: #00c896;
+  background-color: var(--highlight);
   border: none;
-  color: #fff;
+  color: var(--dark-blue);
   padding: 0.8rem;
   border-radius: 10px;
   font-weight: 600;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.3s ease;
 }
 
-.auth-box button:hover {
-  background-color: #00a57d;
+.auth-card button:hover {
+  background-color: var(--cream);
 }
 
-/* ====== PAGINA USUARIO ====== */
+.redirect-text {
+  margin-top: 1.2rem;
+  font-size: 0.9rem;
+  color: var(--accent);
+}
+
+.redirect-text a {
+  color: var(--highlight);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.redirect-text a:hover {
+  text-decoration: underline;
+}
+
+/* ===== PAGINA USUARIO ===== */
 .user-page {
-  padding-top: 5rem;
+  padding-top: 6rem;
   text-align: center;
+  background: var(--dark-blue);
+  min-height: 100vh;
 }
 
 .user-page h2 {
-  color: #00c896;
-  margin-bottom: 1rem;
+  color: var(--highlight);
+  margin-bottom: 2rem;
 }
 
 .routine-list {
@@ -258,47 +269,54 @@ body {
 }
 
 .routine-card {
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 1rem;
+  background-color: var(--mid-blue);
+  border-radius: 15px;
+  padding: 1.5rem;
   width: 280px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  color: var(--cream);
 }
 
-/* ====== FOOTER ====== */
+.routine-card h3 {
+  color: var(--highlight);
+  margin-bottom: 0.5rem;
+}
+
+/* ===== FOOTER ===== */
 footer {
-  background-color: #111;
-  color: #ccc;
+  background-color: var(--mid-blue);
+  color: var(--accent);
   text-align: center;
   padding: 1.2rem;
   font-size: 0.9rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* ====== RESPONSIVE ====== */
+/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
     text-align: center;
+    gap: 0.5rem;
     padding: 1rem;
   }
 
   .navbar ul {
     flex-direction: column;
     gap: 1rem;
-    margin-top: 0.5rem;
   }
 
   .hero-content h1 {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 
   .cards-container,
-  .exercise-preview {
+  .routine-list {
     flex-direction: column;
     align-items: center;
   }
 
-  .auth-box {
-    padding: 1.5rem;
+  .auth-card {
+    padding: 1.8rem;
   }
 }

@@ -1,46 +1,64 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Iniciar sesión | RutinasFit</title>
+  <title>Iniciar Sesión - RutinasFit</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-
-<body>
+<body class="auth-body">
   <div class="auth-container">
-    <div class="auth-box">
-      <h2>Iniciar Sesión</h2>
-      <input type="email" id="email" placeholder="Correo electrónico" required />
-      <input type="password" id="password" placeholder="Contraseña" required />
-      <button id="loginBtn" class="btn">Entrar</button>
+    <div class="auth-card">
+      <h1>Bienvenido de nuevo</h1>
+      <p>Inicia sesión para continuar con tus rutinas</p>
 
-      <p style="margin-top: 1rem;">¿No tienes cuenta?
-        <a href="register.html" style="color:#00c896; text-decoration:none; font-weight:600;">Regístrate aquí</a>
+      <form id="loginForm">
+        <div class="input-group">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" placeholder="ejemplo@correo.com" required />
+        </div>
+
+        <div class="input-group">
+          <label for="password">Contraseña</label>
+          <input type="password" id="password" placeholder="********" required />
+        </div>
+
+        <button type="submit" class="btn">Iniciar sesión</button>
+      </form>
+
+      <p class="redirect-text">
+        ¿No tienes cuenta? <a href="register.html">Regístrate aquí</a>
       </p>
     </div>
   </div>
 
   <script type="module">
     import { auth } from "./firebase-config.js";
-    import { signInWithEmailAndPassword }
+    import { signInWithEmailAndPassword, onAuthStateChanged } 
       from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
-    const loginBtn = document.getElementById("loginBtn");
+    const loginForm = document.getElementById("loginForm");
 
-    loginBtn.addEventListener("click", async () => {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
+    // Si el usuario ya está autenticado, redirige directamente
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        window.location.href = "user.html";
+      }
+    });
+
+    loginForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
 
       try {
         await signInWithEmailAndPassword(auth, email, password);
-        window.location.href = "dashboard.html";
+        window.location.href = "user.html";
       } catch (error) {
+        console.error("Error en inicio de sesión:", error);
         alert("Error: " + error.message);
       }
     });
   </script>
 </body>
-
 </html>

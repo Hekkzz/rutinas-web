@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registro - RutinasFit</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="auth-body">
+  <div class="auth-container">
+    <div class="auth-card">
+      <h1>Crea tu cuenta</h1>
+      <p>Empieza a crear tus rutinas personalizadas</p>
+
+      <form id="registerForm">
+        <div class="input-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" placeholder="Tu nombre" required />
+        </div>
+
+        <div class="input-group">
+          <label for="apellido">Apellido</label>
+          <input type="text" id="apellido" placeholder="Tu apellido" required />
+        </div>
+
+        <div class="input-group">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" placeholder="ejemplo@correo.com" required />
+        </div>
+
+        <div class="input-group">
+          <label for="password">Contraseña</label>
+          <input type="password" id="password" placeholder="********" required />
+        </div>
+
+        <button type="submit" class="btn">Registrarse</button>
+      </form>
+
+      <p class="redirect-text">
+        ¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a>
+      </p>
+    </div>
+  </div>
+
+  <script type="module">
+    import { auth, db } from "./firebase-config.js";
+    import { createUserWithEmailAndPassword, updateProfile } 
+      from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+    import { doc, setDoc } 
+      from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+    const form = document.getElementById("registerForm");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const nombre = document.getElementById("nombre").value.trim();
+      const apellido = document.getElementById("apellido").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      try {
+        // Crear cuenta en Firebase Auth
+        const cred = await createUserWithEmailAndPassword(auth, email, password);
+
+        // Actualizar perfil del usuario (solo displayName)
+        await updateProfile(cred.user, {
+          displayName: `${nombre} ${apellido}`,
+        });
+
+        // Guardar datos adicionales en Firestore
+        await setDoc(doc(db, "usuarios", cred.user.uid), {
+          nombre,
+          apellido,
+          email,
+          creado: new Date().toISOString(),
+        });
+
+        alert("Cuenta creada exitosamente 🎉");
+        window.location.href = "user.html";
+
+      } catch (error) {
+        console.error("Error al registrar:", error);
+        alert("Error: " + error.message);
+      }
+    });
+  </script>
+</body>
+</html>
