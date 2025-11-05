@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RutinasFit | Tu entrenador personal IA</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
   <!-- 🔹 NAVBAR -->
   <header class="navbar">
@@ -14,6 +16,7 @@
       <ul>
         <li><a href="#inicio">Inicio</a></li>
         <li><a href="#rutinas">Rutinas</a></li>
+        <li><a href="#asistente">Asistente Virtual</a></li>
         <li><a href="#ejercicios">Ejercicios</a></li>
       </ul>
     </nav>
@@ -51,9 +54,70 @@
     </div>
   </section>
 
+  <!-- 🔹 ASISTENTE -->
+  <section id="asistente" class="section">
+    <h2>Asistente Virtual</h2>
+
+    <div class="asistente-box">
+      <div class="asistente-card" onclick="window.location.href='login.html'">
+        <div class="asistente-texto">
+          <h3>Chat impulsado por IA</h3>
+          <p>
+            Interactúa con nuestro asistente virtual para resolver tus dudas sobre rutinas, alimentación o ejercicios.
+            Un chat moderno, rápido y disponible 24/7 impulsado por inteligencia artificial.
+          </p>
+          <button class="btn-asistente">Hablar con el asistente</button>
+        </div>
+
+        <div class="asistente-imagen">
+          <img src="img/asistente_virtual.avif" alt="Asistente Virtual">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔹 EJERCICIOS -->
+  <section id="ejercicios" class="section">
+    <h2>Ejercicios Destacados</h2>
+
+    <div class="page-content ejercicios-section">
+      <p class="subtexto">Explora algunos de los ejercicios más efectivos de nuestras rutinas.</p>
+      <div class="ejercicios-grid">
+        <div class="ejercicio-promo">
+          <img src="img/pull-up.jpg" alt="Pull Up" />
+          <div class="promo-info">
+            <h3>Pull Up</h3>
+            <p>Ejercicio clave para desarrollar la espalda y los brazos.</p>
+            <button class="btn-ver">Ver rutina</button>
+          </div>
+        </div>
+
+        <div class="ejercicio-promo">
+          <img src="img/press_plano.jpg" alt="Press Plano" />
+          <div class="promo-info">
+            <h3>Press Plano</h3>
+            <p>Excelente para el desarrollo del pecho, tríceps y deltoides frontales.</p>
+            <button class="btn-ver">Ver rutina</button>
+          </div>
+        </div>
+
+        <div class="ejercicio-promo">
+          <img src="img/prensa.jpg" alt="Prensa Piernas" />
+          <div class="promo-info">
+            <h3>Prensa de Piernas</h3>
+            <p>Fortalece cuádriceps, glúteos y femorales.</p>
+            <button class="btn-ver">Ver rutina</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
   <!-- 🔹 FOOTER -->
   <footer>
     <p>© 2025 RutinasFit | Desarrollado con 💪 por IA Fitness</p>
   </footer>
 </body>
+
 </html>

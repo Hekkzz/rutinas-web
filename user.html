@@ -4,104 +4,66 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mi Espacio | RutinasFit</title>
+  <title>RutinasFit - Panel del Usuario</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 
-<body>
+<body class="user-body">
+  <!-- 🔹 Barra de navegación -->
   <header class="navbar">
     <div class="logo">Rutinas<span>Fit</span></div>
-    <button id="logoutBtn" class="btn small">Cerrar sesión</button>
+    <nav>
+      <ul>
+        <li><button class="nav-btn active" data-tab="inicio">Inicio</button></li>
+        <li><button class="nav-btn" data-tab="calendario">Calendario</button></li>
+        <li><button class="nav-btn" data-tab="rutina">Rutina</button></li>
+        <li><button class="nav-btn" data-tab="chat">Chat</button></li>
+        <li><button id="logoutBtn" class="nav-btn logout-btn">Cerrar sesión</button></li>
+      </ul>
+    </nav>
   </header>
 
-  <main class="user-page">
-    <h2 id="welcomeText">Cargando usuario...</h2>
-    <p>Genera y guarda tus rutinas personalizadas con IA.</p>
+  <!-- 🔹 Contenido principal -->
+  <main class="page-content">
+    <!-- 🏠 Inicio -->
+    <section id="inicio" class="tab-content active">
+      <h2>Bienvenido <span id="userName"></span> 👋</h2>
+      <p>Correo: <span id="userEmail"></span></p>
+      <div id="userDataContainer" class="user-data-box"></div>
+    </section>
 
-    <div class="auth-card" style="margin-top: 2rem;">
-      <h3 style="color:#f5eedc;">Generar rutina rápida</h3>
-
-      <div class="input-group">
-        <label>Objetivo</label>
-        <select id="objetivo" class="input-style">
-          <option value="fuerza">Ganar músculo</option>
-          <option value="perder">Perder grasa</option>
-          <option value="mantener">Mantener forma</option>
-        </select>
+    <!-- 📅 Calendario -->
+    <section id="calendario" class="tab-content">
+      <h2>Calendario de rutinas</h2>
+      <p>Aquí verás tu planificación semanal.</p>
+      <div id="calendarContainer" class="calendar-container">
+        <p>Esta sección mostrará un calendario con tus rutinas diarias.</p>
       </div>
+    </section>
 
-      <div class="input-group">
-        <label>Nivel</label>
-        <select id="nivel" class="input-style">
-          <option value="principiante">Principiante</option>
-          <option value="intermedio">Intermedio</option>
-        </select>
+    <!-- 💪 Rutina -->
+    <section id="rutina" class="tab-content">
+      <h2>Tu rutina personalizada</h2>
+      <div id="rutinaContainer" class="rutina-box"></div>
+      <button id="crearRutinaBtn" class="btn">Crear rutina personalizada</button>
+    </section>
+
+    <!-- 💬 Chat -->
+    <section id="chat" class="tab-content">
+      <h2>Asistente virtual 🤖</h2>
+      <div id="chatBox" class="chat-box">
+        <div id="chatMessages" class="chat-messages"></div>
+
+        <div class="chat-input">
+          <textarea id="chatInput" placeholder="Escribe tu duda..."></textarea>
+          <button id="sendChatBtn" class="btn">Enviar</button>
+        </div>
       </div>
+    </section>
 
-      <button id="genRutina" class="btn" style="margin-top:1.5rem;">Generar y guardar</button>
-      <div id="rutinaOut" style="margin-top: 1.5rem;"></div>
-    </div>
   </main>
 
-  <footer>
-    <p>© 2025 RutinasFit | Tu asistente fitness inteligente</p>
-  </footer>
-
-  <script type="module">
-    import { auth, db } from "./firebase-config.js";
-    import { onAuthStateChanged, signOut }
-      from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-    import { doc, setDoc }
-      from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
-
-    const logoutBtn = document.getElementById("logoutBtn");
-    const welcomeText = document.getElementById("welcomeText");
-
-    onAuthStateChanged(auth, async (user) => {
-      if (!user) {
-        window.location.href = "login.html";
-      } else {
-        // Si tiene nombre registrado, lo mostramos
-        const nombre = user.displayName || user.email;
-        welcomeText.textContent = `Bienvenido, ${nombre}`;
-      }
-    });
-
-    logoutBtn.addEventListener("click", async () => {
-      await signOut(auth);
-      window.location.href = "index.html";
-    });
-
-    const rutinas = {
-      fuerza: { principiante: ["Sentadilla 3x12", "Flexiones 3x10"], intermedio: ["Press banca 4x8", "Dominadas 4x6"] },
-      perder: { principiante: ["HIIT 20min", "Circuito 3 rondas"], intermedio: ["HIIT 25min", "Cardio 40min"] },
-      mantener: { principiante: ["Full body 3x10", "Cinta 20min"], intermedio: ["Full body 4x8", "Bicicleta 30min"] }
-    };
-
-    document.getElementById("genRutina").addEventListener("click", async () => {
-      const objetivo = objetivo.value;
-      const nivel = nivel.value;
-      const rutina = rutinas[objetivo][nivel] || ["Rutina no definida"];
-      document.getElementById("rutinaOut").innerHTML =
-        "<ul style='list-style:none;'>" +
-        rutina.map(r => `<li>✅ ${r}</li>`).join("") +
-        "</ul>";
-
-      const user = auth.currentUser;
-      if (!user) return alert("Usuario no autenticado");
-
-      try {
-        await setDoc(doc(db, "rutinas", user.uid), {
-          email: user.email,
-          fecha: new Date().toISOString(),
-          objetivo, nivel, rutina
-        });
-        alert("Rutina guardada correctamente ✅");
-      } catch (err) {
-        alert("Error al guardar: " + err.message);
-      }
-    });
-  </script>
+  <script type="module" src="user.js"></script>
 </body>
 
 </html>

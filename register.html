@@ -1,11 +1,44 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Registro - RutinasFit</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* 🔔 Estilos para el anuncio flotante */
+    .toast {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #333;
+      color: #fff;
+      padding: 14px 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      z-index: 9999;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .toast.success {
+      background-color: #4CAF50;
+    }
+
+    .toast.error {
+      background-color: #E53935;
+    }
+  </style>
 </head>
+
 <body class="auth-body">
   <div class="auth-container">
     <div class="auth-card">
@@ -33,6 +66,44 @@
           <input type="password" id="password" placeholder="********" required />
         </div>
 
+        <hr />
+
+        <div class="input-group">
+          <label for="peso">Peso (kg)</label>
+          <input type="number" id="peso" placeholder="Ej. 70" required />
+        </div>
+
+        <div class="input-group">
+          <label for="estatura">Estatura (cm)</label>
+          <input type="number" id="estatura" placeholder="Ej. 175" required />
+        </div>
+
+        <div class="input-group">
+          <label for="edad">Edad</label>
+          <input type="number" id="edad" placeholder="Ej. 25" required />
+        </div>
+
+        <div class="input-group">
+          <label for="genero">Género</label>
+          <select id="genero" required>
+            <option value="">Selecciona tu género</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Femenino">Femenino</option>
+            <option value="Otro">Otro</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label for="objetivo">Objetivo</label>
+          <select id="objetivo" required>
+            <option value="">Selecciona tu objetivo</option>
+            <option value="Fuerza">Ganar fuerza</option>
+            <option value="Definición">Definición</option>
+            <option value="Resistencia">Resistencia</option>
+            <option value="Pérdida de peso">Pérdida de peso</option>
+          </select>
+        </div>
+
         <button type="submit" class="btn">Registrarse</button>
       </form>
 
@@ -42,14 +113,27 @@
     </div>
   </div>
 
+  <!-- Contenedor del toast -->
+  <div id="toast" class="toast"></div>
+
   <script type="module">
     import { auth, db } from "./firebase-config.js";
-    import { createUserWithEmailAndPassword, updateProfile } 
+    import { createUserWithEmailAndPassword, updateProfile }
       from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-    import { doc, setDoc } 
+    import { doc, setDoc }
       from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
     const form = document.getElementById("registerForm");
+    const toast = document.getElementById("toast");
+
+    // 🔔 Función para mostrar el anuncio flotante
+    function showToast(message, type = "success") {
+      toast.textContent = message;
+      toast.className = `toast show ${type}`;
+      setTimeout(() => {
+        toast.className = "toast";
+      }, 3000);
+    }
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -58,30 +142,48 @@
       const apellido = document.getElementById("apellido").value.trim();
       const email = document.getElementById("email").value.trim();
       const password = document.getElementById("password").value.trim();
+      const peso = parseFloat(document.getElementById("peso").value);
+      const estatura = parseFloat(document.getElementById("estatura").value);
+      const edad = parseInt(document.getElementById("edad").value);
+      const genero = document.getElementById("genero").value;
+      const objetivo = document.getElementById("objetivo").value;
+
+      // Validar campos manualmente por si el usuario omite algo
+      if (!nombre || !apellido || !email || !password || !peso || !estatura || !edad || !genero || !objetivo) {
+        showToast("Por favor completa todos los campos.", "error");
+        return;
+      }
 
       try {
         // Crear cuenta en Firebase Auth
         const cred = await createUserWithEmailAndPassword(auth, email, password);
 
-        // Actualizar perfil del usuario (solo displayName)
+        // Actualizar displayName
         await updateProfile(cred.user, {
           displayName: `${nombre} ${apellido}`,
         });
 
-        // Guardar datos adicionales en Firestore
+        // Guardar datos personales en Firestore
         await setDoc(doc(db, "usuarios", cred.user.uid), {
           nombre,
           apellido,
           email,
+          peso,
+          estatura,
+          edad,
+          genero,
+          objetivo,
           creado: new Date().toISOString(),
         });
 
-        alert("Cuenta creada exitosamente 🎉");
-        window.location.href = "user.html";
+        showToast("Registro exitoso 🎉");
+        setTimeout(() => {
+          window.location.href = "user.html";
+        }, 1500);
 
       } catch (error) {
         console.error("Error al registrar:", error);
-        alert("Error: " + error.message);
+        showToast("Error: " + error.message, "error");
       }
     });
   </script>
