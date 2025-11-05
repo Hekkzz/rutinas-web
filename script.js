@@ -1,18 +1,19 @@
-const menuToggle = document.getElementById("menu-toggle");
-const menu = document.getElementById("menu");
+// 🔹 Toggle del menú en móviles
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
 
-menuToggle.addEventListener("click", () => {
-  menu.classList.toggle("active");
-  menuToggle.classList.toggle("active");
-});
-
-// Cerrar el menú al hacer clic en un enlace
-menu.querySelectorAll("a").forEach(link => {
-  link.addEventListener("click", () => {
-    menu.classList.remove("active");
-    menuToggle.classList.remove("active");
+if (menuToggle && navLinks) {
+  menuToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("show");
   });
-});
+
+  // 🔹 Cierra el menú al hacer clic en un enlace
+  navLinks.querySelectorAll("button, a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("show");
+    });
+  });
+}
 
 function redirigirLogin() {
   window.location.href = "login.html";
