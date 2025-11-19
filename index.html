@@ -47,15 +47,16 @@
       <!-- Video Rutina 1 -->
       <div class="video-card" onclick="window.location.href='login.html'">
         <video autoplay muted loop playsinline class="video-bg">
-          <source src="videos/video1.mp4" type="video/mp4">
+          <source src="videos/fuerza.mp4" type="video/mp4">
         </video>
         <div class="video-overlay"></div>
         <div class="video-content-overlay">
-          <h3>Tren Inferior Explosivo</h3>
-          <p>Transforma tus piernas con entrenamientos intensivos que garantizan resultados visibles</p>
+          <div class="video-icon">💪</div>
+          <h3>Entrenamiento de Fuerza</h3>
+          <p>Desarrolla masa muscular y potencia con planes progresivos</p>
           <div class="video-features">
-            <span class="feature-badge">Personalizado</span>
-            <span class="feature-badge">Progresivo</span>
+            <span class="feature-badge">🎯 Personalizado</span>
+            <span class="feature-badge">📈 Progresivo</span>
           </div>
         </div>
       </div>
@@ -63,15 +64,16 @@
       <!-- Video Rutina 2 -->
       <div class="video-card" onclick="window.location.href='login.html'">
         <video autoplay muted loop playsinline class="video-bg">
-          <source src="videos/video2.mp4" type="video/mp4">
+          <source src="videos/cardio.mp4" type="video/mp4">
         </video>
         <div class="video-overlay"></div>
         <div class="video-content-overlay">
-          <h3>Fuerza Superior</h3>
-          <p>Desarrolla fuerza real trabajando espalda, bíceps y core simultáneamente</p>
+          <div class="video-icon">🔥</div>
+          <h3>Cardio Intensivo</h3>
+          <p>Quema grasa y mejora tu resistencia cardiovascular</p>
           <div class="video-features">
-            <span class="feature-badge">Alta Intensidad</span>
-            <span class="feature-badge">Gana Fuerza</span>
+            <span class="feature-badge">🏃 Alta Intensidad</span>
+            <span class="feature-badge">💧 Quema Grasa</span>
           </div>
         </div>
       </div>
@@ -141,10 +143,18 @@
 
   <!-- 🔹 FOOTER -->
   <footer>
-    <p>© 2025 CoolGym | Desarrollado por COOLGYM</p>
+    <p>© 2025 CoolGym | Desarrollado con 💪 por IA Fitness</p>
   </footer>
   
   <script src="script.js"></script>
+  <script>
+    // Script adicional para cerrar el menú al hacer clic en un enlace
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('show');
+      });
+    });
+  </script>
 </body>
 
 </html>

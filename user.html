@@ -72,6 +72,27 @@
   </main>
 
   <script type="module" src="user.js"></script>
+  <script>
+    // Script adicional para cerrar el menú móvil al hacer clic en un botón
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuToggle = document.getElementById('menuToggle');
+      const navLinks = document.getElementById('navLinks');
+      
+      // Toggle del menú hamburguesa
+      if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+          navLinks.classList.toggle('show');
+        });
+      }
+      
+      // Cerrar menú al hacer clic en cualquier botón de navegación
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          navLinks.classList.remove('show');
+        });
+      });
+    });
+  </script>
 </body>
 
 </html>
