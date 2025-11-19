@@ -1,3 +1,4 @@
+// scritp.js
 // 🔹 Toggle del menú en móviles
 const menuToggle = document.getElementById("menuToggle");
 const navLinks = document.getElementById("navLinks");

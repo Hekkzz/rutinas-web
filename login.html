@@ -1,16 +1,19 @@
+<!--login.html-->
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Iniciar Sesión - RutinasFit</title>
+  <title>Iniciar Sesión - CoolGym</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body class="auth-body">
   <div class="auth-container">
     <div class="auth-card">
-      <h1>Bienvenido de nuevo</h1>
-      <p>Inicia sesión para continuar con tus rutinas</p>
+      <div class="auth-header">
+        <h1>Bienvenido a <span class="brand-inline">CoolGym</span></h1>
+        <p>Inicia sesión para continuar con tus rutinas</p>
+      </div>
 
       <form id="loginForm">
         <div class="input-group">
@@ -23,7 +26,7 @@
           <input type="password" id="password" placeholder="********" required />
         </div>
 
-        <button type="submit" class="btn">Iniciar sesión</button>
+        <button type="submit" class="btn btn-full">Iniciar sesión</button>
       </form>
 
       <p class="redirect-text">

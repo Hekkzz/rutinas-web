@@ -1,17 +1,18 @@
+<!--index.html-->
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RutinasFit | Tu entrenador personal IA</title>
+  <title>CoolGym | Tu entrenador personal IA</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
   <!-- 🔹 NAVBAR -->
   <header class="navbar">
-    <div class="logo">Rutinas<span>Fit</span></div>
+    <div class="logo">Cool<span>Gym</span></div>
       <div class="menu-toggle" id="menuToggle">
         <span></span>
         <span></span>
@@ -40,28 +41,47 @@
   <!-- 🔹 RUTINAS -->
   <section id="rutinas" class="section">
     <h2>Rutinas Inteligentes</h2>
-    <div class="cards-container">
-      <div class="card" onclick="window.location.href='login.html'">
-        <img src="img/fuerza.jpeg" alt="Fuerza" />
-        <h3>Fuerza</h3>
-        <p>Desarrolla masa muscular y potencia con planes progresivos.</p>
+    <p class="section-subtitle">Programas diseñados para adaptarse a tus objetivos y nivel</p>
+    
+    <div class="video-rutinas-container">
+      <!-- Video Rutina 1 -->
+      <div class="video-card" onclick="window.location.href='login.html'">
+        <video autoplay muted loop playsinline class="video-bg">
+          <source src="videos/video1.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+        <div class="video-content-overlay">
+          <h3>Tren Inferior Explosivo</h3>
+          <p>Transforma tus piernas con entrenamientos intensivos que garantizan resultados visibles</p>
+          <div class="video-features">
+            <span class="feature-badge">Personalizado</span>
+            <span class="feature-badge">Progresivo</span>
+          </div>
+        </div>
       </div>
-      <div class="card" onclick="window.location.href='login.html'">
-        <img src="img/cardio.jpg" alt="Cardio" />
-        <h3>Cardio</h3>
-        <p>Rutinas intensas para quemar grasa y mejorar tu resistencia.</p>
-      </div>
-      <div class="card" onclick="window.location.href='login.html'">
-        <img src="img/estiramiento.jpg" alt="Flexibilidad" />
-        <h3>Flexibilidad</h3>
-        <p>Mejora tu movilidad y prevén lesiones con estiramientos guiados.</p>
+
+      <!-- Video Rutina 2 -->
+      <div class="video-card" onclick="window.location.href='login.html'">
+        <video autoplay muted loop playsinline class="video-bg">
+          <source src="videos/video2.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+        <div class="video-content-overlay">
+          <h3>Fuerza Superior</h3>
+          <p>Desarrolla fuerza real trabajando espalda, bíceps y core simultáneamente</p>
+          <div class="video-features">
+            <span class="feature-badge">Alta Intensidad</span>
+            <span class="feature-badge">Gana Fuerza</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- 🔹 ASISTENTE -->
-  <section id="asistente" class="section">
+  <section id="asistente" class="section section-dark">
     <h2>Asistente Virtual</h2>
+    <p class="section-subtitle">Tu entrenador personal disponible 24/7</p>
 
     <div class="asistente-box">
       <div class="asistente-card" onclick="window.location.href='login.html'">
@@ -121,8 +141,10 @@
 
   <!-- 🔹 FOOTER -->
   <footer>
-    <p>© 2025 RutinasFit | Desarrollado con 💪 por IA Fitness</p>
+    <p>© 2025 CoolGym | Desarrollado por COOLGYM</p>
   </footer>
+  
+  <script src="script.js"></script>
 </body>
 
 </html>

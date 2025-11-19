@@ -1,17 +1,18 @@
+<!--user.html-->
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RutinasFit - Panel del Usuario</title>
+  <title>CoolGym - Panel del Usuario</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body class="user-body">
   <!-- 🔹 Barra de navegación -->
   <header class="navbar">
-    <div class="logo">Rutinas<span>Fit</span></div>
+    <div class="logo">Cool<span>Gym</span></div>
     <div class="menu-toggle" id="menuToggle">
       <span></span>
       <span></span>
@@ -32,8 +33,10 @@
   <main class="page-content">
     <!-- 🏠 Inicio -->
     <section id="inicio" class="tab-content active">
-      <h2>Bienvenido <span id="userName"></span> 👋</h2>
-      <p>Correo: <span id="userEmail"></span></p>
+      <div class="welcome-header">
+        <h2>Bienvenido <span id="userName"></span> 👋</h2>
+        <p class="user-email">Correo: <span id="userEmail"></span></p>
+      </div>
       <div id="userDataContainer" class="user-data-box"></div>
     </section>
 
@@ -50,7 +53,7 @@
     <section id="rutina" class="tab-content">
       <h2>Tu rutina personalizada</h2>
       <div id="rutinaContainer" class="rutina-box"></div>
-      <button id="crearRutinaBtn" class="btn">Crear rutina personalizada</button>
+      <button id="crearRutinaBtn" class="btn btn-create">Crear rutina personalizada</button>
     </section>
 
     <!-- 💬 Chat -->
